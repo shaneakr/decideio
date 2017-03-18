@@ -1,15 +1,12 @@
 package com.example.kingroberson.decideio;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.kingroberson.decideio.data.QuestionsContract;
-import com.example.kingroberson.decideio.data.QuestionsDBHelper;
+import java.util.List;
 
 
 public class Learn extends AppCompatActivity {
@@ -22,33 +19,31 @@ public class Learn extends AppCompatActivity {
         setContentView(R.layout.activity_learn);
 
 
-        QuestionsDBHelper mQuestionsDBHelper = new QuestionsDBHelper(this);
-        SQLiteDatabase db = mQuestionsDBHelper.getReadableDatabase();
+//        Question question = new Question("qTest", "a1test", "a2test", "a3test");
+//        question.save();
 
-
-        String [] projection = {
-                QuestionsContract.QuestionEntry._ID,
-                        QuestionsContract.QuestionEntry.QUESTION,
-                        QuestionsContract.QuestionEntry.ANSWER1,
-                        QuestionsContract.QuestionEntry.ANSWER2,
-                        QuestionsContract.QuestionEntry.ANSWER3
-        };
-
+        List<Question> questions = Question.listAll(Question.class);
 
         TextView learnView = (TextView) findViewById(R.id.learnTextView);
 
-        Cursor cursor = db.query(QuestionsContract.QuestionEntry.TABLE_NAME,projection,null, null, null, null, null);
+        String question_stuff = "";
+        for (Question question : questions) {
+            question_stuff += "\n\n\n\n";
+            question_stuff += question.question;
+            question_stuff += "\n";
+            question_stuff += question.answer1;
+            question_stuff += "\n";
+            question_stuff += question.answer2;
+            question_stuff += "\n";
+            question_stuff += question.answer3;
+            question_stuff += "\n";
+        }
+
+        learnView.setText("All the questions squished together: " + question_stuff);
 
 
-        learnView.setText("num rows: " + String.valueOf(cursor.getCount()));
 
 
-
-        //while (cursor.moveToNext()){
-
-        //}
-
-        cursor.close();
     }
 
 
