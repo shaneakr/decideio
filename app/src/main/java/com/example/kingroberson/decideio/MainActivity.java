@@ -17,6 +17,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
+        SQLiteHandler db = SQLiteHandler.getInstance(getApplicationContext());
+
+
+        db.deleteQuestions();
+        for (int i = 0;i < 6; i++) {
+            db.addQuestion(("Question "+i),"Answer 1", "Answer 2", "Answer 3");
+        }
+
+
        /* try{
 
             //creating the database object

@@ -2,11 +2,10 @@ package com.example.kingroberson.decideio;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import java.util.List;
 
 
 public class Learn extends AppCompatActivity {
@@ -22,27 +21,17 @@ public class Learn extends AppCompatActivity {
 //        Question question = new Question("qTest", "a1test", "a2test", "a3test");
 //        question.save();
 
-        List<Question> questions = Question.listAll(Question.class);
-
-        TextView learnView = (TextView) findViewById(R.id.learnTextView);
-
-        String question_stuff = "";
-        for (Question question : questions) {
-            question_stuff += "\n\n\n\n";
-            question_stuff += question.question;
-            question_stuff += "\n";
-            question_stuff += question.answer1;
-            question_stuff += "\n";
-            question_stuff += question.answer2;
-            question_stuff += "\n";
-            question_stuff += question.answer3;
-            question_stuff += "\n";
-        }
-
-        learnView.setText("All the questions squished together: " + question_stuff);
+        //List<Question> questions = Question.listAll(Question.class);
 
 
 
+
+        SQLiteHandler db = SQLiteHandler.getInstance(getApplicationContext());
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv);
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(this, db.getAllQuestions());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(recyclerAdapter);
 
     }
 

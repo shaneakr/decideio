@@ -27,24 +27,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:orientation="horizontal">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="222dp"
-        android:text="Software Eng"
-        android:layout_weight="1"
-        android:layout_marginTop="65dp"
-        android:onClick="softwareEng"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="222dp"
-        android:text="Software Eng"
-        android:layout_weight="1"
-        android:layout_marginTop="65dp"/>
+
+
+        <ImageButton
+            android:id="@+id/softengbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginTop="105dp"
+            android:layout_weight="1"
+            android:onClick="softwareEng"
+            android:src="@drawable/compand" />
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginTop="105dp"
+            android:layout_weight="1"
+            android:src="@drawable/entr" />
     </LinearLayout>
 
     <LinearLayout
@@ -52,18 +58,20 @@
         android:layout_height="300dp"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="222dp"
-            android:text="Software Eng"
+            android:layout_height="150dp"
+            android:text="Social Good"
             android:layout_weight="1"
+            android:src="@drawable/soci"
 
             />
-        <Button
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="222dp"
-            android:text="Software Eng"
+            android:layout_height="150dp"
+            android:text="Product Management"
             android:layout_weight="1"
+            android:src="@drawable/prod"
             />
 
     </LinearLayout>
